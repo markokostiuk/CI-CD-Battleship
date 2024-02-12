@@ -1,6 +1,30 @@
 import pygame
 import sys
 
+# Определение класса DraggableEllipse
+from DraggableEllipse import DraggableEllipse
+
+# Определение функции отрисовки кораблей
+def getShip(size, x, y, count):
+    ellipses = []
+    for i in range(count):
+        ellipses.append(DraggableEllipse(x, y, size, (0, 0, 0)))
+        x += size * 40
+    return ellipses
+
+
+# Определение функции создания списка кораблей
+def getShips():
+    ships = getShip(4, 100, 180, 1)
+    ships.extend(getShip(3, 100, 230, 2))
+    ships.extend(getShip(2, 100, 280, 3))
+    ships.extend(getShip(1, 100, 330, 4))
+    return ships
+
+
+# Инициализация списка кораблей
+ships = getShips()
+
 # Инициализация Pygame
 pygame.init()
 
