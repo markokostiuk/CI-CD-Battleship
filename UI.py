@@ -2,6 +2,8 @@ import pygame
 import sys
 from User import User
 import random
+import time
+import numpy as np
 
 class BattleshipGame:
     def __init__(self):
@@ -30,7 +32,7 @@ class BattleshipGame:
 
         # Змінні
         self.currentScene = 1                                                                                           # сцена яка відображається зараз
-        self.attacking_player = random.choice([1, 2])
+        self.attacking_player = 0
         # кнопки
         self.buttonWithFriend = pygame.Rect(170, 200, self.BUTTON_WIDTH_FIRST_SCENE, self.BUTTON_HEIGHT_FIRST_SCENE)    # кнопка "Грати з другом"
         self.buttonWithComputer = pygame.Rect(630, 200, self.BUTTON_WIDTH_FIRST_SCENE, self.BUTTON_HEIGHT_FIRST_SCENE)  # кнопка "Грати з комп'ютером"
@@ -52,15 +54,17 @@ class BattleshipGame:
         self.text = ''                                                                                                  # для збереження імені гравця
 
         # стрілка для позначення ходу
-        self.arrowImage = pygame.image.load("images/arrow.png")
-        self.arrowImageRect = self.arrowImage.get_rect()
-        self.arrowImageRect.x = self.WIDTH // 2 - 60
-        self.arrowImageRect.y = 320
-        self.arrowImage = pygame.transform.scale(self.arrowImage, (100, 100))
+        self.arrow1Image = pygame.image.load("images/arrow1.png")
+        self.arrow2Image = pygame.image.load("images/arrow2.png")
+        self.arrow1ImageRect = self.arrow1Image.get_rect()
+        self.arrow1ImageRect.x = self.WIDTH // 2 - 60
+        self.arrow1ImageRect.y = 320
+        self.arrow1Image = pygame.transform.scale(self.arrow1Image, (100, 100))
 
-        if self.attacking_player == 2:
-            self.arrowImage = pygame.transform.rotate(self.arrowImage, 180)
-
+        self.arrow2ImageRect = self.arrow1Image.get_rect()
+        self.arrow2ImageRect.x = self.WIDTH // 2 - 60
+        self.arrow2ImageRect.y = 320
+        self.arrow2Image = pygame.transform.scale(self.arrow2Image, (100, 100))
 
         # параметр для налашування грати з другом чи з ПК
         self.gameParam = 0
@@ -134,8 +138,8 @@ class BattleshipGame:
         else:
             return None, None, 'out'
     def draw_opponent_fields(self):
-        field1 = self.users[0].hiddenField.getField()
-        field2 = self.users[1].hiddenField.getField()
+        field1 = self.users[0].getHiddenField()
+        field2 = self.users[1].getHiddenField()
 
         for i in range(10):
             for j in range(10):
@@ -191,12 +195,16 @@ class BattleshipGame:
         text_rect = text_surface.get_rect(center=(self.WIDTH // 2 + 310, self.HEIGHT // 2 - 250))
         self.screen.blit(text_surface, text_rect)
 
-        self.screen.blit(self.arrowImage, self.arrowImageRect.topleft)
+        if self.attacking_player == 1:
+            self.screen.blit(self.arrow1Image, self.arrow1ImageRect.topleft)
+        elif self.attacking_player == 2:
+            self.screen.blit(self.arrow2Image, self.arrow2ImageRect.topleft)
+
         self.draw_opponent_fields()
 
     def draw_fourth_scene(self):
         font = pygame.font.Font(None, 100)
-        text_surface = font.render(f"{self.users[0 if self.attacking_player == 1 else 1].getName()} виграв!",
+        text_surface = font.render(f"{self.users[0 if self.attacking_player == 1 else 1].getName()} is winner!",
                                    True, self.BLACK)
         text_rect = text_surface.get_rect(center=(self.WIDTH // 2, self.HEIGHT // 2))
         self.screen.blit(text_surface, text_rect)
@@ -250,7 +258,7 @@ class BattleshipGame:
 
         if self.startButton.collidepoint(pygame.mouse.get_pos()):
             if self.gameParam == 3:
-                for ship in self.users[1].ships:
+                for ship in self.users[1].getShips():
                     if len(ship.position) == 0:
                         return
 
@@ -258,17 +266,19 @@ class BattleshipGame:
             if self.gameParam == 1:
                 self.users.append(User("comp"))
                 self.users[-1].randomPlacement()
+                self.attacking_player = 1
                 # зберегти данні гравця в списку
                 # додати комп'ютер як другого гравця в список. Комп'ютер має наслідувати клас Гравця
                 self.currentScene = 3
             if self.gameParam == 2:
-                for ship in self.users[0].ships:
+                for ship in self.users[0].getShips():
                     if len(ship.position) == 0:
                         return
 
                 self.users.append(User("user"))
                 # зберегти данні гравця в списку
                 # створити нового гравця, нові кораблі та все ініціалізуквати для нього
+                self.attacking_player = random.choice([1, 2])
                 self.init_ships()
                 self.gameParam = 3
         for ship in self.ships:
@@ -277,6 +287,7 @@ class BattleshipGame:
 
     # натискання ЛКМ на третій сцені
     def handle_mouse_left_button_down_scene3(self):
+        status = ""
         x, y, side = self.get_grid_cell_location(pygame.mouse.get_pos())
         if side == 'out':
             return
@@ -284,25 +295,42 @@ class BattleshipGame:
         if self.attacking_player == 1:
             if side == 'left field':
                 return
-            status = self.users[1].shoot(x, y)
 
-            if status == "loose":
-                self.currentScene = 4
+            status = self.users[1].shoot(x, y, False)
 
         elif self.attacking_player == 2:
+            if self.gameParam == 1:
+                return
+
             if side == 'right field':
                 return
-            status = self.users[0].shoot(x, y)
 
-            if status == "loose":
-                self.currentScene = 4
+            status = self.users[0].shoot(x, y, False)
 
-        if self.attacking_player == 1:
-            self.attacking_player = 2
-        else:
-            self.attacking_player = 1
+        if status == "loose":
+            self.currentScene = 4
+            return
 
-        self.arrowImage = pygame.transform.rotate(self.arrowImage, 180)
+        if status == "missed":
+            if self.attacking_player == 1:
+                self.attacking_player = 2
+
+                if self.gameParam == 1:
+                    while True:
+                        status = self.users[0].shoot(None, None, True)
+
+                        if status == "loose":
+                            self.currentScene = 4
+                            return
+
+                        if status == "missed":
+                            self.attacking_player = 1
+                            break
+            else:
+                self.attacking_player = 1
+
+
+
 
     # не натискання кнопок
     def handle_mouse_left_button_up(self, event):

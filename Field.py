@@ -17,4 +17,3 @@ class Field():
 
     def clearField(self):
         self.setField(np.full((10, 10), 0, dtype=int))
-        print(self.field, "CLEARED")
