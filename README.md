@@ -26,6 +26,9 @@ Pressing '`' again will take you back.
 
 ## Requirements
 Start the game
+
 Clone the repository: git clone https://github.com/markokostiuk/CI-CD-Battleship.git
+
 Run the game: python main.py
+
 Enjoy the game!
