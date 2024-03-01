@@ -1,19 +1,19 @@
 import numpy as np
 
 class Field():
-    """клас Поле - при ініціалізації створює матрицю 10*10 заповнену нулями - пустотою"""
+    """class Field - when initialized, creates a 10*10 matrix filled with zeros - empty"""
 
     def __init__(self):
-        # створюємо матрицю (ігрове поле), заповнюємо нулями, що означатимуть порожнє поле
+        # Create a matrix (playing field), fill it with zeros, which will mean an empty field
         self.field = np.full((10, 10), 0, dtype=int)
 
-    def getField(self):
-        """повертає поточне поле"""
+    def get_field(self):
+        """returns the current field"""
         return self.field
 
-    def setField(self, field):
-        """оновлює поле"""
+    def set_field(self, field):
+        """updates the field"""
         self.field = field
 
-    def clearField(self):
-        self.setField(np.full((10, 10), 0, dtype=int))
+    def clear_field(self):
+        self.set_field(np.full((10, 10), 0, dtype=int))
