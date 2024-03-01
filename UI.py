@@ -1,7 +1,9 @@
 import pygame
 import sys
-from DraggableEllipse import DraggableEllipse
 from User import User
+import random
+import time
+import numpy as np
 
 class BattleshipGame:
     def __init__(self):
@@ -30,13 +32,18 @@ class BattleshipGame:
 
         # Змінні
         self.currentScene = 1                                                                                           # сцена яка відображається зараз
+        self.attacking_player = 0
         # кнопки
         self.buttonWithFriend = pygame.Rect(170, 200, self.BUTTON_WIDTH_FIRST_SCENE, self.BUTTON_HEIGHT_FIRST_SCENE)    # кнопка "Грати з другом"
         self.buttonWithComputer = pygame.Rect(630, 200, self.BUTTON_WIDTH_FIRST_SCENE, self.BUTTON_HEIGHT_FIRST_SCENE)  # кнопка "Грати з комп'ютером"
         self.buttonExit = pygame.Rect(self.WIDTH - 110, 10, 100, 50)                                                    # кнопка виходу
         self.randomButton = pygame.Rect(450, 535, 140, 30)                                                              # кнопка рандомного розставлення кораблів
+        self.clearButton = pygame.Rect(450, 490, 140, 30)                                                               # кнопка для очищення поля
         self.startButton = pygame.Rect(self.WIDTH - 160, self.HEIGHT - 60, 150, 50)                                     # кнопка початку гри
         self.buttonImageFriend = pygame.image.load("images/buttonFriend.jpg")                                           # задання фону для кнопки "Грати з другом"
+        self.damagedCellImage = pygame.image.load("images/damaged_cell.png")
+        self.destroyedCellImage = pygame.image.load("images/destroyed_cell.png")
+        self.missedCellImage = pygame.image.load("images/missed_cell.png")
         self.buttonImageFriend = pygame.transform.scale(self.buttonImageFriend, self.BUTTON_SIZE_FIRST_SCENE)           # задання розмірів
         self.buttonImageComputer = pygame.image.load("images/buttonComputer.jpg")                                       # задання фону для кнопки "Грати з комп'ютером"
         self.buttonImageComputer = pygame.transform.scale(self.buttonImageComputer, self.BUTTON_SIZE_FIRST_SCENE)       # задання розмірів
@@ -47,11 +54,17 @@ class BattleshipGame:
         self.text = ''                                                                                                  # для збереження імені гравця
 
         # стрілка для позначення ходу
-        self.arrowImage = pygame.image.load("images/arrow.png")
-        self.arrowImageRect = self.arrowImage.get_rect()
-        self.arrowImageRect.x = self.WIDTH // 2 - 60
-        self.arrowImageRect.y = 320
-        self.arrowImage = pygame.transform.scale(self.arrowImage, (100, 100))
+        self.arrow1Image = pygame.image.load("images/arrow1.png")
+        self.arrow2Image = pygame.image.load("images/arrow2.png")
+        self.arrow1ImageRect = self.arrow1Image.get_rect()
+        self.arrow1ImageRect.x = self.WIDTH // 2 - 60
+        self.arrow1ImageRect.y = 320
+        self.arrow1Image = pygame.transform.scale(self.arrow1Image, (100, 100))
+
+        self.arrow2ImageRect = self.arrow1Image.get_rect()
+        self.arrow2ImageRect.x = self.WIDTH // 2 - 60
+        self.arrow2ImageRect.y = 320
+        self.arrow2Image = pygame.transform.scale(self.arrow2Image, (100, 100))
 
         # параметр для налашування грати з другом чи з ПК
         self.gameParam = 0
@@ -60,24 +73,14 @@ class BattleshipGame:
         self.users = [User("user")]
 
         # ініціалізація корабів
-        self.ships = self.get_ships()
+        self.ships = None
 
-    # отримання певного набору кораблів
-    def get_ship(self, size, x, y, count):
-        ellipses = []
-        for i in range(count):
-            ellipses.append(DraggableEllipse(x, y, size, (0, 0, 0)))
-            x += size * 40
-        return ellipses
+        self.init_ships()
 
-    # отримання усього набору кораблів
-    def get_ships(self):
-        ships = self.get_ship(4, 100, 180, 1)
-        ships.extend(self.get_ship(3, 100, 230, 2))
-        ships.extend(self.get_ship(2, 100, 280, 3))
-        ships.extend(self.get_ship(1, 100, 330, 4))
-        return ships
 
+
+    def init_ships(self):
+        self.ships = self.users[-1].getShips()
     # функція для малювання кнопки згідно отриманих параметрів
     def draw_button(self, rect, image, text):
         if image is not None:
@@ -128,11 +131,31 @@ class BattleshipGame:
 
     # функція для отримання координат точки куди був постріл
     def get_grid_cell_location(self, mouse_position):
-        print(mouse_position)
         if 110 <= mouse_position[0] <= 510 and 170 <= mouse_position[1] <= 570:
-            return (mouse_position[0] - 110) // 40, (mouse_position[1] - 170) // 40, "left field"
+            return (mouse_position[1] - 170) // 40, (mouse_position[0] - 110) // 40, "left field"
         elif 690 <= mouse_position[0] <= 1190 and 170 <= mouse_position[1] <= 570:
-            return (mouse_position[0] - 690) // 40, (mouse_position[1] - 170) // 40, "right field"
+            return (mouse_position[1] - 170) // 40, (mouse_position[0] - 690) // 40, "right field"
+        else:
+            return None, None, 'out'
+    def draw_opponent_fields(self):
+        field1 = self.users[0].getHiddenField()
+        field2 = self.users[1].getHiddenField()
+
+        for i in range(10):
+            for j in range(10):
+                if field1[i][j] == 10:
+                    self.screen.blit(self.missedCellImage, (j * 40 + 110, i * 40 + 170))
+                if field2[i][j] == 10:
+                    self.screen.blit(self.missedCellImage, (j * 40 + 690, i * 40 + 170))
+                if field1[i][j] == 1:
+                    self.screen.blit(self.damagedCellImage, (j * 40 + 110, i * 40 + 170))
+                if field2[i][j] == 1:
+                    self.screen.blit(self.damagedCellImage, (j * 40 + 690, i * 40 + 170))
+                if field1[i][j] == 2:
+                    self.screen.blit(self.destroyedCellImage, (j * 40 + 110, i * 40 + 170))
+                if field2[i][j] == 2:
+                    self.screen.blit(self.destroyedCellImage, (j * 40 + 690, i * 40 + 170))
+
 
     # малювання першої сцени
     def draw_first_scene(self):
@@ -145,6 +168,7 @@ class BattleshipGame:
         self.text = self.users[-1].getName()
         self.draw_button(self.buttonExit, None, "Back")
         self.draw_button(self.randomButton, None, "Random")
+        self.draw_button(self.clearButton, None, "Clear")
         self.draw_button(self.startButton, None, "Start")
         font = pygame.font.Font(None, 27)
         user_text_plane_text = 'Input user name'
@@ -171,7 +195,21 @@ class BattleshipGame:
         text_rect = text_surface.get_rect(center=(self.WIDTH // 2 + 310, self.HEIGHT // 2 - 250))
         self.screen.blit(text_surface, text_rect)
 
-        self.screen.blit(self.arrowImage, self.arrowImageRect.topleft)
+        if self.attacking_player == 1:
+            self.screen.blit(self.arrow1Image, self.arrow1ImageRect.topleft)
+        elif self.attacking_player == 2:
+            self.screen.blit(self.arrow2Image, self.arrow2ImageRect.topleft)
+
+        self.draw_opponent_fields()
+
+    def draw_fourth_scene(self):
+        font = pygame.font.Font(None, 100)
+        text_surface = font.render(f"{self.users[0 if self.attacking_player == 1 else 1].getName()} is winner!",
+                                   True, self.BLACK)
+        text_rect = text_surface.get_rect(center=(self.WIDTH // 2, self.HEIGHT // 2))
+        self.screen.blit(text_surface, text_rect)
+        self.draw_button(self.buttonExit, None, "Exit")
+
 
     # події користувача
     def handle_events(self):
@@ -189,7 +227,7 @@ class BattleshipGame:
     # натискання ЛКМ
     def handle_mouse_left_button_down(self, event):
         if self.buttonExit.collidepoint(event.pos):
-            if self.currentScene == 1 or self.currentScene == 3:
+            if self.currentScene == 1 or self.currentScene == 3 or self.currentScene == 4:
                 pygame.quit()
                 sys.exit()
             else:
@@ -213,21 +251,35 @@ class BattleshipGame:
     # натискання ЛКМ на другій сцені
     def handle_mouse_left_button_down_scene2(self):
         if self.randomButton.collidepoint(pygame.mouse.get_pos()):
-            # функція випадкового розміщення кораблів
-            return None
+            self.users[-1].randomPlacement()
+
+        if self.clearButton.collidepoint(pygame.mouse.get_pos()):
+            self.users[-1].clearField()
+
         if self.startButton.collidepoint(pygame.mouse.get_pos()):
             if self.gameParam == 3:
+                for ship in self.users[1].getShips():
+                    if len(ship.position) == 0:
+                        return
+
                 self.currentScene = 3
             if self.gameParam == 1:
                 self.users.append(User("comp"))
+                self.users[-1].randomPlacement()
+                self.attacking_player = 1
                 # зберегти данні гравця в списку
                 # додати комп'ютер як другого гравця в список. Комп'ютер має наслідувати клас Гравця
                 self.currentScene = 3
             if self.gameParam == 2:
+                for ship in self.users[0].getShips():
+                    if len(ship.position) == 0:
+                        return
+
                 self.users.append(User("user"))
                 # зберегти данні гравця в списку
                 # створити нового гравця, нові кораблі та все ініціалізуквати для нього
-                self.ships = self.get_ships()
+                self.attacking_player = random.choice([1, 2])
+                self.init_ships()
                 self.gameParam = 3
         for ship in self.ships:
             if ship.rect.collidepoint(pygame.mouse.get_pos()):
@@ -235,8 +287,50 @@ class BattleshipGame:
 
     # натискання ЛКМ на третій сцені
     def handle_mouse_left_button_down_scene3(self):
-        print(self.get_grid_cell_location(pygame.mouse.get_pos()))
-        self.arrowImage = pygame.transform.rotate(self.arrowImage, 180)
+        status = ""
+        x, y, side = self.get_grid_cell_location(pygame.mouse.get_pos())
+        if side == 'out':
+            return
+
+        if self.attacking_player == 1:
+            if side == 'left field':
+                return
+
+            status = self.users[1].shoot(x, y, False)
+
+        elif self.attacking_player == 2:
+            if self.gameParam == 1:
+                return
+
+            if side == 'right field':
+                return
+
+            status = self.users[0].shoot(x, y, False)
+
+        if status == "loose":
+            self.currentScene = 4
+            return
+
+        if status == "missed":
+            if self.attacking_player == 1:
+                self.attacking_player = 2
+
+                if self.gameParam == 1:
+                    while True:
+                        status = self.users[0].shoot(None, None, True)
+
+                        if status == "loose":
+                            self.currentScene = 4
+                            return
+
+                        if status == "missed":
+                            self.attacking_player = 1
+                            break
+            else:
+                self.attacking_player = 1
+
+
+
 
     # не натискання кнопок
     def handle_mouse_left_button_up(self, event):
@@ -276,4 +370,6 @@ class BattleshipGame:
             self.draw_second_scene()
         elif self.currentScene == 3:
             self.draw_third_scene()
+        elif self.currentScene == 4:
+            self.draw_fourth_scene()
         pygame.display.flip()
