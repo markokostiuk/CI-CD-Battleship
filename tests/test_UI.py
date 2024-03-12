@@ -19,6 +19,8 @@ def ui_console():
     ui_for_console_tests.console_active = True
     return ui_for_console_tests
 
+"""get_grid_cell_location testing on left field"""
+
 # testing get_grid_location on the left field 0, 0
 def test_get_grid_cell_location_correct_l1(ui):
     assert ui.get_grid_cell_location((120, 180)) == (0, 0, "left field")
@@ -40,6 +42,7 @@ def test_get_grid_cell_location_uncorrect_l2(ui):
     assert ui.get_grid_cell_location((520, 580)) == (None, None, "out")
 
 
+"""get_grid_cell_location testing on right field"""
 
 # testing get_grid_location on the right field 0, 0
 def test_get_grid_cell_location_correct_r1(ui):
@@ -60,6 +63,9 @@ def test_get_grid_cell_location_uncorrect_r1(ui):
 # testing get_grid_location on the right field with un correct values 2
 def test_get_grid_cell_location_uncorrect_r2(ui):
     assert ui.get_grid_cell_location((1200, 580)) == (None, None, "out")
+
+
+"""console testing"""
 
 # testing console open
 def test_console_toggle(ui):
@@ -140,6 +146,9 @@ def test_console_unknown_command(ui_console):
     assert len(ui_console.console_text) == initial_text_length + 1
     assert "Unknown command" == ui_console.console_text[-1]
 
+
+"""handle_mouse_left_button_down testing"""
+
 # testing button_exit
 def test_handle_mouse_left_button_down(ui):
     ui.current_scene = 2
@@ -147,6 +156,9 @@ def test_handle_mouse_left_button_down(ui):
                                pos=ui.button_exit.center)
     ui.handle_mouse_left_button_down(event)
     assert ui.current_scene == 1
+
+
+"""handle_mouse_left_button_down_scene1 testing"""
 
 # testing button_with_friend
 def test_handle_mouse_left_button_down_scene1_with_friend(ui):
@@ -163,6 +175,9 @@ def test_handle_mouse_left_button_down_scene1_with_computer(ui):
     ui.handle_mouse_left_button_down_scene1(event)
     assert ui.current_scene == 2
     assert ui.game_param == 1
+
+
+"""handle_mouse_left_button_down_scene2 testing"""
 
 # testing start_button if two users are playing and the first user has set up ships
 def test_handle_mouse_left_button_down_scene2_with_friend(ui):
