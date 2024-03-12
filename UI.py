@@ -145,7 +145,7 @@ class BattleshipGame:
         elif 690 <= mouse_position[0] <= 1190 and 170 <= mouse_position[1] <= 570:
             return (mouse_position[1] - 170) // 40, (mouse_position[0] - 690) // 40, "right field"
         else:
-            return None, None, 'out'
+            return None, None, "out"
 
 
     # Function to draw opponent's fields
