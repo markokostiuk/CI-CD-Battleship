@@ -76,6 +76,7 @@ class BattleshipGame:
 
         # A list of players with one player by default
         self.users = [User("user")]
+        self.status = ""
 
         # Initialization of ships
         self.ships = None
@@ -356,7 +357,7 @@ class BattleshipGame:
 
     # Handling left mouse button down events on the third scene
     def handle_mouse_left_button_down_scene3(self):
-        status = ""
+        self.status = ""
         x, y, side = self.get_grid_cell_location(pygame.mouse.get_pos())
         if side == 'out':
             return
@@ -365,7 +366,7 @@ class BattleshipGame:
             if side == 'left field':
                 return
 
-            status = self.users[1].shoot(x, y, False)
+            self.status = self.users[1].shoot(x, y, False)
 
         elif self.attacking_player == 2:
             if self.game_param == 1:
@@ -374,25 +375,25 @@ class BattleshipGame:
             if side == 'right field':
                 return
 
-            status = self.users[0].shoot(x, y, False)
+            self.status = self.users[0].shoot(x, y, False)
 
-        if status == "loose":
+        if self.status == "loose":
             self.current_scene = 4
             return
 
-        if status == "missed":
+        if self.status == "missed":
             if self.attacking_player == 1:
                 self.attacking_player = 2
 
                 if self.game_param == 1:
                     while True:
-                        status = self.users[0].shoot(None, None, True)
+                        self.status = self.users[0].shoot(None, None, True)
 
-                        if status == "loose":
+                        if self.status == "loose":
                             self.current_scene = 4
                             return
 
-                        if status == "missed":
+                        if self.status == "missed":
                             self.attacking_player = 1
                             break
             else:

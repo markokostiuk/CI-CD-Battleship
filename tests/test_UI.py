@@ -19,6 +19,15 @@ def ui_console():
     ui_for_console_tests.console_active = True
     return ui_for_console_tests
 
+
+"""init_ships testing"""
+# testing init_ships
+def test_init_ships(ui):
+    ui.init_ships()
+    assert ui.ships != None
+    assert len(ui.ships) == 10
+
+
 """get_grid_cell_location testing on left field"""
 
 # testing get_grid_location on the left field 0, 0
@@ -212,4 +221,19 @@ def test_handle_mouse_left_button_down_scene2_start(ui):
     assert ui.current_scene == 3
 
 
+"""handle_mouse_left_button_down_scene2 testing"""
 
+# testing if user shoot on the out of field
+def test_handle_mouse_left_button_down_scene3_out(ui):
+    with patch('pygame.mouse.get_pos', return_value=(10, 10)):
+        response = ui.handle_mouse_left_button_down_scene3()
+    assert response == None
+
+# testing if user shoot on his filed
+def test_handle_mouse_left_button_down_scene3_player_field(ui):
+    ui.attacking_player = 1
+    with patch('pygame.mouse.get_pos', return_value=(300, 450)):
+        response = ui.handle_mouse_left_button_down_scene3()
+    assert response == None
+
+# testing if user shoot on opponent field
