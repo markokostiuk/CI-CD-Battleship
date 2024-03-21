@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdf22eb5-5a21-4b9b-aa79-a27f025ad341" name="Changes" comment="conflict resolution" />
+    <list default="true" id="fdf22eb5-5a21-4b9b-aa79-a27f025ad341" name="Changes" comment="conflict resolution">
+      <change afterPath="$PROJECT_DIR$/.flake8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_UI.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +31,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -36,6 +45,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests for test_UI.test_console.executor": "Run",
+    "Python tests.Python tests for test_UI.test_console_commands.executor": "Run",
     "Python tests.Python tests for test_UI.test_console_get_colors.executor": "Run",
     "Python tests.Python tests for test_UI.test_console_get_commands.executor": "Run",
     "Python tests.Python tests for test_UI.test_console_set_correct_bg_color.executor": "Run",
@@ -43,14 +54,19 @@
     "Python tests.Python tests for test_UI.test_console_set_uncorrect_border_color.executor": "Run",
     "Python tests.Python tests for test_UI.test_console_toggle.executor": "Run",
     "Python tests.Python tests for test_UI.test_console_unknown_command.executor": "Run",
+    "Python tests.Python tests for test_UI.test_get_grid_cell_location.executor": "Run",
     "Python tests.Python tests for test_UI.test_get_grid_cell_location_correct_r2.executor": "Run",
     "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down.executor": "Run",
+    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1.executor": "Run",
     "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_computer.executor": "Run",
     "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_friend.executor": "Run",
+    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2.executor": "Run",
     "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_random_placement.executor": "Run",
     "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_start.executor": "Run",
     "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_with_computer.executor": "Run",
     "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_with_friend.executor": "Run",
+    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_out.executor": "Run",
+    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_player_field.executor": "Run",
     "Python tests.Python tests for test_UI.test_init_ships.executor": "Run",
     "Python tests.Python tests for test_UI.test_init_ships_correct_l1.executor": "Run",
     "Python tests.Python tests for test_UI.test_init_ships_correct_l2.executor": "Run",
@@ -83,7 +99,7 @@
       <recent name="C:\Users\Vetal\PycharmProjects\CI-CD-Battleship\tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_UI.test_get_grid_cell_location_correct_r2">
+  <component name="RunManager" selected="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_out">
     <configuration name="UI" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="CI-CD-Battleship" />
       <option name="ENV_FILES" value="" />
@@ -132,7 +148,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_UI.test_console_get_colors" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_UI.test_handle_mouse_left_button_down_scene1" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CI-CD-Battleship" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,11 +160,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_UI.test_console_get_colors&quot;" />
+      <option name="_new_target" value="&quot;test_UI.test_handle_mouse_left_button_down_scene1&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_UI.test_get_grid_cell_location_correct_r2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_UI.test_handle_mouse_left_button_down_scene2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CI-CD-Battleship" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,11 +176,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_UI.test_get_grid_cell_location_correct_r2&quot;" />
+      <option name="_new_target" value="&quot;test_UI.test_handle_mouse_left_button_down_scene2&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_UI.test_handle_mouse_left_button_down" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_UI.test_handle_mouse_left_button_down_scene2_with_computer" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CI-CD-Battleship" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,11 +192,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_UI.test_handle_mouse_left_button_down&quot;" />
+      <option name="_new_target" value="&quot;test_UI.test_handle_mouse_left_button_down_scene2_with_computer&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_computer" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_UI.test_handle_mouse_left_button_down_scene3_out" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CI-CD-Battleship" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -192,11 +208,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_UI.test_handle_mouse_left_button_down_scene1_with_computer&quot;" />
+      <option name="_new_target" value="&quot;test_UI.test_handle_mouse_left_button_down_scene3_out&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_friend" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_UI.test_handle_mouse_left_button_down_scene3_player_field" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CI-CD-Battleship" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -208,17 +224,17 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_UI.test_handle_mouse_left_button_down_scene1_with_friend&quot;" />
+      <option name="_new_target" value="&quot;test_UI.test_handle_mouse_left_button_down_scene3_player_field&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_UI.test_get_grid_cell_location_correct_r2" />
-        <item itemvalue="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_computer" />
-        <item itemvalue="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down" />
-        <item itemvalue="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_friend" />
-        <item itemvalue="Python tests.Python tests for test_UI.test_console_get_colors" />
+        <item itemvalue="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_out" />
+        <item itemvalue="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_player_field" />
+        <item itemvalue="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2" />
+        <item itemvalue="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_with_computer" />
+        <item itemvalue="Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1" />
       </list>
     </recent_temporary>
   </component>
@@ -248,6 +264,9 @@
       <workItem from="1709075014181" duration="567000" />
       <workItem from="1709110713700" duration="8574000" />
       <workItem from="1709222862858" duration="24909000" />
+      <workItem from="1710422860230" duration="2186000" />
+      <workItem from="1710929513896" duration="371000" />
+      <workItem from="1711038184165" duration="7069000" />
     </task>
     <servers />
   </component>
@@ -274,7 +293,7 @@
     <SUITE FILE_PATH="coverage/CI_CD_Battleship$main.coverage" NAME="main Coverage Results" MODIFIED="1709249282955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CI_CD_Battleship$DraggableEllipse.coverage" NAME="DraggableEllipse Coverage Results" MODIFIED="1707768121317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CI_CD_Battleship$test.coverage" NAME="test Coverage Results" MODIFIED="1709245244929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CI_CD_Battleship$.coverage" NAME=" Coverage Results" MODIFIED="1710268193550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/CI_CD_Battleship$.coverage" NAME=" Coverage Results" MODIFIED="1711044560660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/CI_CD_Battleship$User.coverage" NAME="User Coverage Results" MODIFIED="1709239579477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

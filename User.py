@@ -3,7 +3,6 @@ from DraggableEllipse import DraggableEllipse
 import random
 import pygame
 import numpy as np
-import time
 
 
 class User:

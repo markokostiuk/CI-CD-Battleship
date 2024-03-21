@@ -299,6 +299,7 @@ class BattleshipGame:
     def handle_mouse_left_button_down(self, event):
         if self.button_exit.collidepoint(event.pos):
             if self.current_scene == 1 or self.current_scene == 3 or self.current_scene == 4:
+                self.current_scene = 0
                 pygame.quit()
                 sys.exit()
             else:
