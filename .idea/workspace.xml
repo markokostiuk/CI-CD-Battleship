@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fdf22eb5-5a21-4b9b-aa79-a27f025ad341" name="Changes" comment="conflict resolution" />
+    <list default="true" id="fdf22eb5-5a21-4b9b-aa79-a27f025ad341" name="Changes" comment="conflict resolution">
+      <change beforePath="$PROJECT_DIR$/ci-cd.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ci-cd.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -260,7 +263,7 @@
       <workItem from="1709222862858" duration="24909000" />
       <workItem from="1710422860230" duration="2186000" />
       <workItem from="1710929513896" duration="371000" />
-      <workItem from="1711038184165" duration="7465000" />
+      <workItem from="1711038184165" duration="7777000" />
     </task>
     <servers />
   </component>

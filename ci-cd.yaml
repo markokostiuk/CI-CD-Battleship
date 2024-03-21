@@ -23,9 +23,22 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest
+          pytest --html=pytest_report.html
 
       - name: Run Flake8 linting
         run: |
-          flake8
+          flake8 --format=html --htmldir=flake8_reports
+          
+      - name: Upload pytest report
+        uses: actions/upload-artifact@v2
+        with:
+          name: pytest-report
+          path: pytest_report.html
+
+      - name: Upload flake8 report
+        uses: actions/upload-artifact@v2
+        with:
+          name: flake8-report
+          path: flake8_reports
+
 
