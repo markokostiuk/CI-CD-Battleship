@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fdf22eb5-5a21-4b9b-aa79-a27f025ad341" name="Changes" comment="conflict resolution">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,57 +40,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for test_UI.test_console.executor": "Run",
-    "Python tests.Python tests for test_UI.test_console_commands.executor": "Run",
-    "Python tests.Python tests for test_UI.test_console_get_colors.executor": "Run",
-    "Python tests.Python tests for test_UI.test_console_get_commands.executor": "Run",
-    "Python tests.Python tests for test_UI.test_console_set_correct_bg_color.executor": "Run",
-    "Python tests.Python tests for test_UI.test_console_set_uncorrect_bg_color.executor": "Run",
-    "Python tests.Python tests for test_UI.test_console_set_uncorrect_border_color.executor": "Run",
-    "Python tests.Python tests for test_UI.test_console_toggle.executor": "Run",
-    "Python tests.Python tests for test_UI.test_console_unknown_command.executor": "Run",
-    "Python tests.Python tests for test_UI.test_get_grid_cell_location.executor": "Run",
-    "Python tests.Python tests for test_UI.test_get_grid_cell_location_correct_r2.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_computer.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_friend.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_random_placement.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_start.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_with_computer.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_with_friend.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_out.executor": "Run",
-    "Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_player_field.executor": "Run",
-    "Python tests.Python tests for test_UI.test_init_ships.executor": "Run",
-    "Python tests.Python tests for test_UI.test_init_ships_correct_l1.executor": "Run",
-    "Python tests.Python tests for test_UI.test_init_ships_correct_l2.executor": "Run",
-    "Python tests.Python tests for test_UI.test_init_ships_correct_l3.executor": "Run",
-    "Python tests.Python tests for test_UI.test_init_ships_uncorrect_l1.executor": "Run",
-    "Python tests.Python tests for test_UI.test_init_ships_uncorrect_l2.executor": "Run",
-    "Python.DraggableEllipse.executor": "Run",
-    "Python.UI.executor": "Run",
-    "Python.User.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/Vetal/PycharmProjects/Artem",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_UI.test_console.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_console_commands.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_console_get_colors.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_console_get_commands.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_console_set_correct_bg_color.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_console_set_uncorrect_bg_color.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_console_set_uncorrect_border_color.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_console_toggle.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_console_unknown_command.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_get_grid_cell_location.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_get_grid_cell_location_correct_r2.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_computer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene1_with_friend.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_random_placement.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_start.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_with_computer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene2_with_friend.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_out.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_handle_mouse_left_button_down_scene3_player_field.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_init_ships.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_init_ships_correct_l1.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_init_ships_correct_l2.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_init_ships_correct_l3.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_init_ships_uncorrect_l1.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_UI.test_init_ships_uncorrect_l2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.DraggableEllipse.executor&quot;: &quot;Run&quot;,
+    &quot;Python.UI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.User.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vetal/PycharmProjects/Artem&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Vetal\PycharmProjects\CI-CD-Battleship\tests" />
@@ -265,6 +266,7 @@
       <workItem from="1711038184165" duration="8095000" />
       <workItem from="1711118442691" duration="768000" />
       <workItem from="1711123048658" duration="29000" />
+      <workItem from="1711439422756" duration="952000" />
     </task>
     <servers />
   </component>
