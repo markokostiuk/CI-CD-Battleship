@@ -75,6 +75,7 @@ class User:
                             field[i][j] -= 1
 
         self.__playerField.set_field(field)
+        print(field.tolist())
         return field, "the ship is placed on the playing field"
 
 
@@ -350,3 +351,6 @@ class User:
             status = "loose"
 
         return status
+
+    def get_field(self):
+        return self.__playerField.get_field()
