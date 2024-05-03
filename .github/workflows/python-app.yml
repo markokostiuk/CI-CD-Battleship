@@ -32,6 +32,7 @@ jobs:
     - name: Test with pytest and generate HTML report
       run: |
         pytest --html=pytest_report.html  # Generate HTML report
+        flake8 . --format=html --htmldir=flake8_report  # Generate flake8 HTML report
     - name: Upload pytest HTML report as artifact
       uses: actions/upload-artifact@v2
       with:
