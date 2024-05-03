@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest pytest-html
+        pip install flake8 pytest pytest-html flake8-html
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
@@ -32,7 +32,7 @@ jobs:
     - name: Test with pytest and generate HTML report
       run: |
         pytest --html=pytest_report.html  # Generate HTML report
-        flake8 . --format=html > flake8_report.html  # Generate flake8 HTML report
+        flake8 --format=html --htmldir=flake-report
     - name: Upload pytest HTML report as artifact
       uses: actions/upload-artifact@v2
       with:
