@@ -37,3 +37,8 @@ jobs:
       with:
         name: pytest-html-report
         path: pytest_report.html
+    - name: Upload flake8 HTML report as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: flake8-html-report
+        path: flake8_report
