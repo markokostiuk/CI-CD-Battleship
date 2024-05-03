@@ -32,7 +32,7 @@ jobs:
     - name: Test with pytest and generate HTML report
       run: |
         pytest --html=pytest_report.html  # Generate HTML report
-        flake8 --format=html --htmldir=flake-report
+        flake8 --format=html --htmldir=flake8-report
     - name: Upload pytest HTML report as artifact
       uses: actions/upload-artifact@v2
       with:
@@ -42,4 +42,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: flake8-html-report
-        path: flake8_report
+        path: flake8-report
